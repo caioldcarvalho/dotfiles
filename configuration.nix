@@ -95,6 +95,8 @@
   };
 
   programs.dconf.enable = true;
+  programs.hyprlock.enable = true;
+
 
   programs.hyprland = {
     enable = true;
@@ -154,6 +156,7 @@
     pavucontrol
     playerctl
     pulseaudio
+    swww
 
   ];
 
