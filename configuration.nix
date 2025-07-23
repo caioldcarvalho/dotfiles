@@ -5,6 +5,8 @@
     ./hardware-configuration.nix
   ];
 
+  hardware.bluetooth.enable = true;
+
   # Bootloader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -29,17 +31,30 @@
 
   # X11 + GDM + GNOME
   services.xserver = {
-    enable = true;
-    displayManager.gdm.enable = true;
-    desktopManager.gnome.enable = true;
     xkb.layout = "br";
     xkb.variant = "";
+    displayManager.gdm.enable = false;
+    enable = false; # se não for usar X11
+
   };
+
+   services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command = "${pkgs.cage}/bin/cage -s ${pkgs.greetd.gtkgreet}/bin/gtkgreet";
+        user = "caio";
+      };
+    };
+  };
+ 
+
 
   console.keyMap = "br-abnt2";
 
   services.printing.enable = true;
 
+  services.blueman.enable = true;
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   security.polkit.enable = true;
@@ -136,18 +151,34 @@
     dunst
     rofi-wayland
     hyprpaper
+    hyprlock
+    hyprshot
     networkmanagerapplet
     wl-clipboard
     grim
     slurp
+    nautilus
     brightnessctl
     pavucontrol
     playerctl
     pulseaudio
     swww
+    greetd.gtkgreet
+    bibata-cursors
+    orchis-theme
+    # BLUTU
+    blueman
+    pavucontrol   # Controlador de áudio PulseAudio (útil com PipeWire)
+    pulsemixer    # Versão em terminal do mixer de volume
+    bluez
   ];
 
-  environment.variables.GTK_ICON_THEME = "Tela";
+  environment.variables = {
+    GTK_ICON_THEME = "Tela";
+    GTK_THEME = "Orchis-Green-Dark";
+    XCURSOR_THEME = "Bibata-Modern-Classic";
+    XCURSOR_SIZE = "24";
+  };
 
   fonts.packages = with pkgs; [
     nerd-fonts.lilex
