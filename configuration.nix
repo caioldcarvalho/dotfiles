@@ -127,6 +127,8 @@
     # Browsers
     chromium
 
+    libnotify
+
     # Fontes
     nerd-fonts.lilex
     nerd-fonts.iosevka
@@ -149,6 +151,7 @@
     xdg-desktop-portal
     waybar
     dunst
+    wofi
     rofi-wayland
     hyprpaper
     hyprlock
@@ -163,6 +166,7 @@
     playerctl
     pulseaudio
     swww
+    mpvpaper
     greetd.gtkgreet
     bibata-cursors
     orchis-theme

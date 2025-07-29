@@ -1,6 +1,7 @@
 * {
     width: 600;
     font: "JetBrainsMono Nerd Font 14";
+    opacity: 0.8;
 }
 @import                          "./colors.rasi"
 element-text, element-icon, mode-switcher {
@@ -18,11 +19,13 @@ window {
     border-radius: 20px;
     padding: 0px 20px 0px 0px;
     font: @font;
+    opacity: 0.8;
 }
 
 mainbox {
     background-color: @background;
     font: @font;
+    opacity: 0.8;
 }
 
 inputbar {
